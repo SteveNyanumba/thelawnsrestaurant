@@ -1,0 +1,101 @@
+/*
+*Date: 10.06.2020
+*Author: Steve Nyanumba
+*Title: Admin LTE Custom Styles For the Lawns Website
+*Credited Website for the Structure: https://adminlte.io
+*/
+
+
+/* -- 1. Variables */
+
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700');
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans:400,700');
+@import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+
+
+$font-primary: 'Poppins',Arial, sans-serif;
+$font-secondary: 'Josefin Sans',Arial, sans-serif;
+$font-tertiary: 'Satisfy', cursive;
+
+$white: #fff;
+$black: #000;
+$darken: darken($primary, 50%);
+$lighten: #aaa;
+$dark: #343a40 ;
+
+$primary: #1f7738;
+$secondary: #f8a52e;
+
+/* 2. Brand Coloring */
+// 2.1. For Active Links
+
+
+.router-link-exact-active{
+    background-color: $primary !important;
+    p , i{
+        color: white !important;
+    }
+}
+.router-link-active{
+    background-color: $primary !important;
+    color: $white !important;
+    p , i{
+        color: white !important;
+    }
+}
+
+//2.2. For the Sidebar Styles
+
+
+.nos-nav{
+    background-color: darken($primary, 50%) !important;
+    border-bottom: 1px solid $secondary;
+    overflow: hidden;
+    i, p{
+        color: white;
+    }
+
+}
+.nos-sidebar{
+    font-family: $font-primary;
+    background-color: $white;
+    color: black !important;
+    overflow: hidden;
+    box-shadow: 1px #000;
+    border-right: 2.5px solid $primary;
+    border-left: 2.5px solid $primary;
+    border-top: 2.5px solid $primary;
+    border-bottom: 2.5px solid $primary;
+
+    .nav-item{
+        p, i{
+            color: black ;
+        }
+        :hover{
+            background-color: $primary !important;
+            p , i{
+                color: white !important;
+            }
+        }
+    }
+
+
+}
+
+/* For the Main Body Background*/
+
+.wrapper,.content-wrapper{
+    background-color: $dark!important;
+    color: white !important;
+    .nos-card{
+        background-color: black;
+        border: 1px solid white;
+        .card-header{
+            border-bottom: 1px solid $secondary;
+        }
+    }
+}
+.nos-modal {
+    border: 1.5px solid $secondary;
+}

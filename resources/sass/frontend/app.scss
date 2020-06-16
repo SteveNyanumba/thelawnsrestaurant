@@ -1,0 +1,41 @@
+
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+@import '~bootstrap-datepicker/dist/css/bootstrap-datepicker.css';
+
+//FontAwesome
+@import '~@fortawesome/fontawesome-free/scss/fontawesome.scss';
+@import '~@fortawesome/fontawesome-free/scss/brands.scss';
+@import '~@fortawesome/fontawesome-free/scss/regular.scss';
+@import '~@fortawesome/fontawesome-free/scss/solid.scss';
+@import '~@fortawesome/fontawesome-free/scss/v4-shims.scss';
+
+
+
+//Flaticon Webfonts
+@import '~flat-icons/creative.css';
+@import '~flat-icons/ecommerce.css';
+@import '~flat-icons/interface.css';
+@import '~flat-icons/technology.css';
+
+
+//owl Carousel
+@import '~owl.carousel/src/scss/theme.default';
+@import '~owl.carousel/src/scss/owl.carousel.scss';
+
+//Magnific Popup
+@import '~magnific-popup/src/css/main.scss';
+
+//Animate CSS
+@import 'animate';
+
+//Custom Styles
+@import 'style';
+
+// JQuery
+
+@import '~timepicker/jquery.timepicker.css'
