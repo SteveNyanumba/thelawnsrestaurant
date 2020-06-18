@@ -1,6 +1,5 @@
 require('jquery')
 require ('jquery-migrate')
-require('./frontend/jquery.animateNumber')
 
 const jQuery = require('jquery')
 window.$ = window.jquery = require('jquery')
@@ -17,7 +16,7 @@ require('magnific-popup/src/js/core')
 require('timepicker/jquery.timepicker')
 require('owl.carousel')
 require('scrollax/scrollax')
-require('./frontend/jquery.animateNumber')
+require('jquery.animate-number')
 
 
 const AOS = require ('aos')

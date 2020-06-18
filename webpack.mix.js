@@ -22,8 +22,8 @@ mix.webpackConfig(webpack => {
             ]
         };
     })
-    .js('resources/backend/js/app.js', 'public/backend/js')
-    .js('resources/frontend/main.js','public/frontend/js')
-    .sass('resources/backend/sass/app.scss', 'public/backend/css')
-    .sass('resources/frontend/sass/admin.scss', 'public/frontend/css')
+    .js('resources/js/backend/app.js', 'public/backend/js')
+    .js('resources/js/frontend/main.js','public/frontend/js')
+    .sass('resources/sass/backend/admin.scss', 'public/backend/css')
+    .sass('resources/sass/frontend/app.scss', 'public/frontend/css')
 

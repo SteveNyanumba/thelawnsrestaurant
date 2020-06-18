@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="/client/css/app.css">
+    <link rel="stylesheet" href="/frontend/css/app.css">
 
 
     <title>The Lawns Restaurant</title>
@@ -14,6 +14,6 @@
         @include('templates.navbar')
             @yield('stuff')
         @include('templates.footer')
-        <script src="/client/js/main.js"></script>
+        <script src="/frontend/js/main.js"></script>
 </body>
 </html>

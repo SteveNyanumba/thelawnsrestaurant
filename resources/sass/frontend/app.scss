@@ -24,8 +24,9 @@
 
 
 //owl Carousel
-@import '~owl.carousel/src/scss/theme.default';
+$owl-image-path: "~owl.carousel/src/img/";
 @import '~owl.carousel/src/scss/owl.carousel.scss';
+@import '~owl.carousel/src/scss/theme.default';
 
 //Magnific Popup
 @import '~magnific-popup/src/css/main.scss';

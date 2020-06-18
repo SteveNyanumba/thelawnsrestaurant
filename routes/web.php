@@ -17,16 +17,19 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 /* The Routes for the Client Side */
-Route::get('/','WebController@homepage')->name('home');
-Route::get('/about', 'WebController@about')->name('about');
-Route::get('/order','WebController@cart')->name('cart');
-Route::get('/contact', 'WebController@contact')->name('contact');
-Route::get('/events', 'WebController@events')->name('events');
-Route::get('/blog', 'WebController@blog')->name('blog');
-Route::get('/menu', 'WebController@menu')->name('menu');
+Route::group(['namespace' => 'user'], function () {
+    Route::get('/','HomeController@index')->name('home');
+    Route::get('/about', 'HomeController@about')->name('about');
+    Route::get('/order','HomeController@cart')->name('cart');
+    Route::get('/contact', 'HomeController@contact')->name('contact');
+    Route::get('/events', 'HomeController@events')->name('events');
+    Route::get('/blog', 'HomeController@blog')->name('blog');
+    Route::get('/menu', 'HomeController@menu')->name('menu');
+});
 
 
 Route::redirect('/admin', '/admin/dashboard', 301);
+Route::redirect('/home', '/admin/dashboard', 301);
 
 Route::group(['prefix' => 'admin','middleware'=>'auth:api', 'namespace'=>'admin'], function () {
 
