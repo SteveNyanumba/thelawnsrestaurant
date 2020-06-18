@@ -31,14 +31,14 @@ Route::group(['namespace' => 'user'], function () {
 Route::redirect('/admin', '/admin/dashboard', 301);
 Route::redirect('/home', '/admin/dashboard', 301);
 
-Route::group(['prefix' => 'admin','middleware'=>'auth:api', 'namespace'=>'admin'], function () {
+Route::group(['prefix' => 'admin','middleware' => ['auth', 'admin'], 'namespace'=>'admin'], function () {
 
     Route::get('{path}', 'DashboardController@index')->where('path','([A-z-\d\/_.]+)?');
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard.index');
 
 });
 
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => ['auth', 'admin']], function () {
     Route::post('/logo', 'PhotosController@logoStore');
     Route::post('/bg1', 'PhotosController@backgroundOne');
     Route::post('/bg2', 'PhotosController@backgroundTwo');

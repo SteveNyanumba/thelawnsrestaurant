@@ -14,7 +14,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
   <!-- Styles -->
 
-  <link href="/administrator/css/admin.css" rel="stylesheet">
+  <link href="/backend/css/admin.css" rel="stylesheet">
 
 
   <!-- Google Font: Source Sans Pro -->
@@ -165,6 +165,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 </div>
 <!-- ./wrapper -->
 
-<script src="/administrator/js/app.js"></script>
+<script src="/backend/js/app.js"></script>
 </body>
 </html>
