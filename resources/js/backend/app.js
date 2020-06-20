@@ -19,7 +19,6 @@ Vue.component(AlertError.name, AlertError)
 
 
 
-
 Vue.use(VueRouter)
 
 const routes = [

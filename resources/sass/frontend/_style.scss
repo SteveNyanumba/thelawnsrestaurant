@@ -2573,3 +2573,17 @@ textarea.form-control {
     stroke-dashoffset: -136px;
   }
 }
+.nos-my{
+    margin-top: 6rem !important;
+}
+.nos-card{
+    background-color: black !important;
+    border: 1px solid white !important;
+    .card-header{
+        border-bottom: 1px solid $secondary !important;
+    }
+    input{
+        background-color: black !important;
+        color: white !important;
+    }
+}

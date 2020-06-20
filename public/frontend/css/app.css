@@ -27451,3 +27451,21 @@ textarea.form-control {
   }
 }
 
+.nos-my {
+  margin-top: 6rem !important;
+}
+
+.nos-card {
+  background-color: black !important;
+  border: 1px solid white !important;
+}
+
+.nos-card .card-header {
+  border-bottom: 1px solid #f8a52e !important;
+}
+
+.nos-card input {
+  background-color: black !important;
+  color: white !important;
+}
+

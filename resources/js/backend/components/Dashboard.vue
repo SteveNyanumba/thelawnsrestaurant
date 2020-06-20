@@ -45,7 +45,7 @@
                                 <img src="/images/bg_1.jpg" alt="BG1" class="img-size-50 img-circle mr-3">
                             </div>
                             <div class="col-md-4 col-12  ">
-                                <button class="btn btn-warning btn-md" data-toggle="modal" data-target="#logoChange">Change</button>
+                                <button class="btn btn-warning btn-md" data-toggle="modal" data-target="#bg_1Change">Change</button>
                             </div>
                             <!-- *End -->
 
@@ -60,7 +60,7 @@
                                 <img src="/images/bg_2.jpg" alt="BG2" class="img-size-50 img-circle mr-3">
                             </div>
                             <div class="col-md-4 col-12  ">
-                                <button class="btn btn-warning btn-md" data-toggle="modal" data-target="#logoChange">Change</button>
+                                <button class="btn btn-warning btn-md" data-toggle="modal" data-target="#bg_2Change">Change</button>
                             </div>
                             <!-- *End -->
 
@@ -75,7 +75,7 @@
                                 <img src="/images/bg_3.jpg" alt="BG3" class="img-size-50 img-circle mr-3">
                             </div>
                             <div class="col-md-4 col-12  ">
-                                <button class="btn btn-warning btn-md" data-toggle="modal" data-target="#logoChange">Change</button>
+                                <button class="btn btn-warning btn-md" data-toggle="modal" data-target="#bg_3Change">Change</button>
                             </div>
                             <!-- *End -->
 
@@ -89,7 +89,7 @@
                                 <img src="/images/bg_4.jpg" alt="BG4" class="img-size-50 img-circle mr-3">
                             </div>
                             <div class="col-md-4 col-12  ">
-                                <button class="btn btn-warning btn-md" data-toggle="modal" data-target="#logoChange">Change</button>
+                                <button class="btn btn-warning btn-md" data-toggle="modal" data-target="#bg_4Change">Change</button>
                             </div>
                             <!-- *End -->
 
@@ -103,7 +103,7 @@
                                 <img src="/images/testimonial.jpg" alt="testimonial" class="img-size-50 img-circle mr-3">
                             </div>
                             <div class="col-md-4 col-12  ">
-                                <button class="btn btn-warning btn-md" data-toggle="modal" data-target="#logoChange">Change</button>
+                                <button class="btn btn-warning btn-md" data-toggle="modal" data-target="#testimonialChange">Change</button>
                             </div>
                             <!-- *End -->
 
@@ -138,6 +138,34 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit"  class="btn btn-warning">Save changes</button>
+                            </div>
+                        </div>
+                    </form>
+            </div>
+        </div>
+
+<!-- Background One -->
+            <div class="modal fade" id="bg_1Change" tabindex="-1" role="dialog" aria-labelledby="bg_1Change" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <form action="POST" enctype="multipart/form-data" @submit="formSubmitBgi">
+                        <div class="modal-content bg-dark nos-modal">
+                            <div class="modal-header">
+                                <h5 class="modal-title text-center" id="exampleModalLongTitle">Change Your First Background</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group row">
+                                    <label for="BG_1" class="col-sm-2 col-form-label">Background 1</label>
+                                    <div class="col-sm-10">
+                                        <input type="file" class="form-control" v-on:change="onImageChangeBgi" placeholder="Choose an Image">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                 <button type="submit"  class="btn btn-warning"  >Save changes</button>
                             </div>
                         </div>
@@ -160,11 +188,11 @@
                 bg_3:'',
                 bg_4:'',
                 testimonial:'',
-                success:''
+
             };
         },
         methods:{
-            //For the Logo Upload
+            /*For the Logo Upload*/
             onImageChangeLogo(e){
                 console.log(e.target.files[0])
                 this.logo = e.target.files[0]
@@ -178,11 +206,52 @@
                 let formData = new FormData()
                 formData.append('logo', this.logo)
 
-                axios.post('/api/logo',formData, config)
+                axios.post('/logo',formData, config)
                 .then(function(res){
-                    this.success = res.data.success
+                    $('#logoChange').modal('hide')
+                    toast.fire({
+                        icon: 'success',
+                        title: res.data.msg
+                    })
+                    console.log(res.data.msg)
+
+
                 })
                 .catch(function(e){
+
+                })
+            },
+
+            /** For the Background One */
+            onImageChangeBgi(e){
+                console.log(e.target.files[0])
+                this.bg_1 = e.target.files[0]
+            },
+            formSubmitBgi(e){
+                e.preventDefault()
+
+                const config = {
+                    headers: {'content-type': 'multipart/form-data'}
+                }
+                let formData = new FormData()
+                formData.append('bg_1', this.bg_1)
+
+                axios.post('/bg1',formData, config)
+                .then(function(res){
+                    $('#bg_1Change').modal('hide')
+                    toast.fire({
+                        icon: 'success',
+                        title: res.data.msg
+                    })
+                    console.log(res.data.msg)
+
+
+                })
+                .catch(function(e){
+                    toast.fire({
+                        icon: 'error',
+                        title: e
+                    })
                     console.log(e)
                 })
             }

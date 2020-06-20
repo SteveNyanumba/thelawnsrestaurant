@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark nos_navbar bg-dark nos-navbar-light" id="nos-navbar">
     <div class="container">
-      <a class="navbar-brand" href="/"><img src="/images/logo.png" alt="The Lawns Restaurant" width="150px"></a>
+      <a class="navbar-brand" href="/"><img src="/images/logo.png" alt="The Lawns Restaurant" width="100px"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nos-nav" aria-controls="nos-nav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="oi oi-menu"></span>
       </button>

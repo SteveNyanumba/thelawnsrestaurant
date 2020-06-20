@@ -15,6 +15,13 @@ class CreateBookingsTable extends Migration
     {
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('name');
+            $table->bigInteger('phone_number');
+            $table->string('email');
+            $table->bigInteger('people');
+            $table->date('book_date');
+            $table->longText('special_requests');
+            $table->boolean('cornfirmed')->default(false);
             $table->timestamps();
         });
     }
