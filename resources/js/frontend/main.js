@@ -19,6 +19,7 @@ require('scrollax/scrollax')
 require('jquery.animate-number')
 
 
+
 const AOS = require ('aos')
 window.Aos = AOS
 

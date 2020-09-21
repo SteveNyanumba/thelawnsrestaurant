@@ -22,15 +22,9 @@ try {
 window.axios = require('axios');
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-window.swal = require('sweetalert2')
+window.Swal = require('sweetalert2').default
 
-const toast = swal.mixin({
-    toast: true,
-    position: 'top-end',
-    showConfirmButton: false,
-    timer: 3000
-})
-window.toast = toast
+
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening

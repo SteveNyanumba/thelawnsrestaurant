@@ -50,3 +50,9 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
     Route::post('/testimonialbg', 'PhotosController@testimonial');
 });
 
+//API Resource Functions
+
+Route::group(['middleware' => ['auth', 'admin'], 'prefix'=>'api'], function () {
+    Route::apiResource('menu', 'MenusController'); // For the Menu
+    Route::apiResource('categories', 'CategoriesController'); // For the Food Categories
+});

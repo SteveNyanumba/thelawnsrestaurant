@@ -1,23 +1,6 @@
 <template>
-    <div class="container">
-        <div class="content-header">
-            <div class="container-fluid">
-                <div class="row mb-2">
-                    <div class="col-sm-6">
-                        <h1 class="m-0 text-white">Dashboard</h1>
-                    </div>
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="/">Home</a></li>
-                            <li class="breadcrumb-item active">The Lawns Dashboard</li>
-                        </ol>
-                    </div><!-- /.col -->
-                </div><!-- /.row -->
-            </div><!-- /.container-fluid -->
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card nos-card">
+  <div>
+      <div class="card nos-card">
                     <div class="card-header text-center"><h3>Current Images</h3></div>
 
                     <div class="card-body">
@@ -113,9 +96,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <!-- Modal Forms -->
+
+                        <!-- Modal Forms -->
 
 <!-- logo -->
             <div class="modal fade" id="logoChange" tabindex="-1" role="dialog" aria-labelledby="logoChange" aria-hidden="true">
@@ -172,16 +154,23 @@
                     </form>
             </div>
         </div>
-    </div>
+
+  </div>
 </template>
 
 <script>
     export default {
+        updated(){
+            Fire.$on('changed',()=>{
+
+            })
+        },
         mounted() {
             console.log('You are Now In the Dashboard')
         },
         data(){
             return {
+                rendered:true,
                 logo:'',
                 bg_1:'',
                 bg_2:'',
@@ -198,8 +187,8 @@
                 this.logo = e.target.files[0]
             },
             formSubmitLogo(e){
-                e.preventDefault()
 
+                e.preventDefault()
                 const config = {
                     headers: {'content-type': 'multipart/form-data'}
                 }
@@ -218,8 +207,9 @@
 
                 })
                 .catch(function(e){
-
+                    console.log(e)
                 })
+
             },
 
             /** For the Background One */

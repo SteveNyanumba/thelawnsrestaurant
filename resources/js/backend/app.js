@@ -1,51 +1,65 @@
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
+// The Backbone
+import Vue from 'vue'
+window.Vue = Vue;
+import VueRouter from 'vue-router'
+import { AlertError, Form, HasError } from 'vform'
+window.Form = Form;
+
+// importing UI Components
 require('./bootstrap');
 require('admin-lte')
 require('jquery')
 require('@fortawesome/fontawesome-free')
-window.Vue = require('vue');
 
-import { AlertError, Form, HasError } from 'vform'
 
-import VueRouter from 'vue-router'
-
-window.Form = Form;
 Vue.component(HasError.name, HasError)
 Vue.component(AlertError.name, AlertError)
 
+//Universal Components
+require('./modalForms')
+require('./components')
+require('./sections')
 
+
+window.Fire = new Vue()
+
+window.VueProgressBar = require('vue-progressbar')
+
+
+
+Vue.use(VueProgressBar, {
+    color:'rgb(31, 173, 62)',
+    failedColor: 'Black',
+    height: '2.5px'
+})
 
 Vue.use(VueRouter)
 
 const routes = [
     {
         path: '/admin/dashboard',
-        component: require('./components/Dashboard.vue').default
+        component: require('./pages/Dashboard.vue').default
     },
     {
         path: '/admin/menu',
-        component: require('./components/Menu.vue').default
+        component: require('./pages/Menu.vue').default
     },
     {
         path: '/admin/contacts',
-        component: require('./components/Contacts.vue').default
+        component: require('./pages/Contacts.vue').default
     },
     {
         path: '/admin/bookings',
-        component: require('./components/Bookings.vue').default
+        component: require('./pages/Bookings.vue').default
     },
     {
         path: '/admin/blog',
-        component: require('./components/Blog.vue').default
+        component: require('./pages/Blog.vue').default
 
     },
     {
         path: '/admin/events',
-        component: require('./components/Events.vue').default
+        component: require('./pages/Events.vue').default
     },
 ]
 /**
@@ -75,3 +89,12 @@ const app = new Vue({
     el: '#app',
     router
 });
+
+const Toast = Swal.mixin({
+    toast:true,
+    position:'top-right',
+    timer:3000,
+    timerProgressBar:true,
+})
+
+window.Toast = Toast
