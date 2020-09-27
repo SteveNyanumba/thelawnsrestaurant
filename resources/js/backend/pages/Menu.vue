@@ -1,5 +1,6 @@
 <template>
 <div>
+    <MenuItemTable/>
     <AddMenu></AddMenu>
 </div>
 </template>

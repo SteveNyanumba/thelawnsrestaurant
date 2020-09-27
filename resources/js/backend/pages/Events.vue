@@ -1,6 +1,6 @@
 <template>
   <div>
-      <h1>This is our Events</h1>
+      <h1>Events Control Coming Soon</h1>
   </div>
 </template>
 

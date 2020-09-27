@@ -43,7 +43,7 @@
           @endif><a href="/contact" class="nav-link">Contact</a></li>
 
           <li class="nav-item cart">
-              <a href="/order" class="nav-link">
+              <a href="/cart" class="nav-link">
                 <span class="fi-ecommerce-invoice"></span>
                     <span class="bag d-flex justify-content-center align-items-center"><small>1</small></span>
                 </a>

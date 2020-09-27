@@ -20,7 +20,6 @@ Auth::routes();
 Route::group(['namespace' => 'user'], function () {
     Route::get('/','HomeController@index')->name('home');
     Route::get('/about', 'HomeController@about')->name('about');
-    Route::get('/order','HomeController@cart')->name('cart');
     Route::get('/contact', 'HomeController@contact')->name('contact');
     Route::get('/events', 'HomeController@events')->name('events');
     Route::get('/blog', 'HomeController@blog')->name('blog');
@@ -37,6 +36,8 @@ Route::group(['prefix' => 'admin','middleware' => ['auth', 'admin'], 'namespace'
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard.index');
 
 });
+
+
 
 Route::group(['middleware' => ['auth', 'admin']], function () {
     Route::post('/logo', 'PhotosController@logoStore');
@@ -55,4 +56,5 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
 Route::group(['middleware' => ['auth', 'admin'], 'prefix'=>'api'], function () {
     Route::apiResource('menu', 'MenusController'); // For the Menu
     Route::apiResource('categories', 'CategoriesController'); // For the Food Categories
+    Route::resource('orders', 'OrdersController'); // For the Orders
 });
