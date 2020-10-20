@@ -1,0 +1,8 @@
+Vue.component('SliderSection', require('./SliderSection.vue').default)
+Vue.component('TestimonialSection', require('./TestimonialSection.vue').default)
+Vue.component('MenuSection', require('./MenuSection.vue').default)
+Vue.component('BlogSection', require('./BlogSection.vue').default)
+Vue.component('DiscoverySection', require('./DiscoverySection.vue').default)
+Vue.component('FeaturesSection', require('./FeaturesSection.vue').default)
+Vue.component('FooterSection', require('./FooterSection.vue').default)
+Vue.component('OrderSection', require('./OrderSection.vue').default)

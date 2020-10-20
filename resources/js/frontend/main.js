@@ -17,6 +17,56 @@ require('timepicker/jquery.timepicker')
 require('owl.carousel')
 require('scrollax/scrollax')
 require('jquery.animate-number')
+import Vue from 'vue'
+window.Vue = Vue
+const VueRouter = require('vue-router').default
+
+require('./components')
+require('./layouts')
+require('./sections')
+
+Vue.use(VueRouter)
+
+const routes = [
+    {
+        path:'/',
+        component: require('./pages/Home.vue').default
+    },
+    {
+        path:'/blog',
+        component: require('./pages/Blog.vue').default
+    },
+    {
+        path:'/about',
+        component: require('./pages/About.vue').default
+    },
+    {
+        path:'/contact',
+        component: require('./pages/Contact.vue').default
+    },
+    {
+        path:'/events',
+        component: require('./pages/Events.vue').default
+    },
+    {
+        path:'/menu',
+        component: require('./pages/Menu.vue').default
+    },
+]
+
+
+
+const router = new VueRouter({
+    routes,
+    mode:'history'
+})
+
+
+
+const app = new Vue({
+    el: '#app',
+    router
+})
 
 
 
@@ -253,7 +303,7 @@ AOS.init({
 
        } , { offset: '95%' } );
    };
-   contentWayPoint();
+   window.contentWayPoint = contentWayPoint;
 
 
    // navigation
@@ -324,5 +374,6 @@ AOS.init({
 
 
 })(jQuery);
+
 
 

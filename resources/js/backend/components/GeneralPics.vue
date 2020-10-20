@@ -183,7 +183,6 @@
         methods:{
             /*For the Logo Upload*/
             onImageChangeLogo(e){
-                console.log(e.target.files[0])
                 this.logo = e.target.files[0]
             },
             formSubmitLogo(e){
@@ -195,14 +194,13 @@
                 let formData = new FormData()
                 formData.append('logo', this.logo)
 
-                axios.post('/logo',formData, config)
+                axios.post('/api/logo',formData, config)
                 .then(function(res){
                     $('#logoChange').modal('hide')
-                    toast.fire({
+                    Toast.fire({
                         icon: 'success',
                         title: res.data.msg
                     })
-                    console.log(res.data.msg)
 
 
                 })
@@ -214,7 +212,6 @@
 
             /** For the Background One */
             onImageChangeBgi(e){
-                console.log(e.target.files[0])
                 this.bg_1 = e.target.files[0]
             },
             formSubmitBgi(e){
@@ -226,14 +223,13 @@
                 let formData = new FormData()
                 formData.append('bg_1', this.bg_1)
 
-                axios.post('/bg1',formData, config)
+                axios.post('/api/bg1',formData, config)
                 .then(function(res){
                     $('#bg_1Change').modal('hide')
-                    toast.fire({
+                    Toast.fire({
                         icon: 'success',
                         title: res.data.msg
                     })
-                    console.log(res.data.msg)
 
 
                 })
