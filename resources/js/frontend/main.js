@@ -17,60 +17,17 @@ require('timepicker/jquery.timepicker')
 require('owl.carousel')
 require('scrollax/scrollax')
 require('jquery.animate-number')
-import Vue from 'vue'
-window.Vue = Vue
-const VueRouter = require('vue-router').default
-
-require('./components')
-require('./layouts')
-require('./sections')
-
-Vue.use(VueRouter)
-
-const routes = [
-    {
-        path:'/',
-        component: require('./pages/Home.vue').default
-    },
-    {
-        path:'/blog',
-        component: require('./pages/Blog.vue').default
-    },
-    {
-        path:'/about',
-        component: require('./pages/About.vue').default
-    },
-    {
-        path:'/contact',
-        component: require('./pages/Contact.vue').default
-    },
-    {
-        path:'/events',
-        component: require('./pages/Events.vue').default
-    },
-    {
-        path:'/menu',
-        component: require('./pages/Menu.vue').default
-    },
-]
-
-
-
-const router = new VueRouter({
-    routes,
-    mode:'history'
-})
-
-
-
-const app = new Vue({
-    el: '#app',
-    router
-})
-
 
 
 const AOS = require ('aos')
+const { default: Axios } = require('axios')
+const { default: Swal } = require('sweetalert2')
+const Toast = Swal.mixin({
+    toast:true,
+    position: 'top-right',
+    timer: 3500,
+    timerProgressBar:true
+})
 window.Aos = AOS
 
 AOS.init({
@@ -80,9 +37,9 @@ AOS.init({
 
 (function($) {
 
-   "use strict";
+    "use strict";
 
-   $(window).stellar({
+    $(window).stellar({
    responsive: true,
    parallaxBackgrounds: true,
    parallaxElements: true,
@@ -90,35 +47,35 @@ AOS.init({
    hideDistantElements: false,
    scrollProperty: 'scroll',
    horizontalOffset: 0,
-     verticalOffset: 0
- });
+   verticalOffset: 0
+});
 
  // Scrollax
  $.Scrollax();
 
 
-   var fullHeight = function() {
+ var fullHeight = function() {
 
-       $('.js-fullheight').css('height', $(window).height());
+     $('.js-fullheight').css('height', $(window).height());
        $(window).resize(function(){
            $('.js-fullheight').css('height', $(window).height());
        });
 
-   };
-   fullHeight();
+    };
+    fullHeight();
 
-   // loader
-   var loader = function() {
-       setTimeout(function() {
-           if($('#nos-loader').length > 0) {
-               $('#nos-loader').removeClass('show');
+    // loader
+    var loader = function() {
+        setTimeout(function() {
+            if($('#nos-loader').length > 0) {
+                $('#nos-loader').removeClass('show');
            }
-       }, 2000);
-   };
+        }, 2000);
+    };
    loader();
 
    // Scrollax
-  $.Scrollax();
+   $.Scrollax();
 
    var carousel = function() {
        $('.home-slider').owlCarousel({
@@ -132,21 +89,21 @@ AOS.init({
        items: 1,
        navText : ["<span class='ion-md-arrow-back'></span>","<span class='ion-chevron-right'></span>"],
        responsive:{
-         0:{
+           0:{
            items:1,
            nav:false
-         },
+        },
          600:{
-           items:1,
-           nav:false
-         },
+             items:1,
+             nav:false
+            },
          1000:{
-           items:1,
+             items:1,
            nav:false
-         }
-       }
-       });
-       $('.carousel-work').owlCarousel({
+        }
+    }
+});
+$('.carousel-work').owlCarousel({
            autoplay: true,
            center: true,
            loop: true,
@@ -159,22 +116,22 @@ AOS.init({
                0:{
                    items: 1,
                    stagePadding: 0
-               },
-               600:{
-                   items: 2,
+                },
+                600:{
+                    items: 2,
                    stagePadding: 50
-               },
+                },
                1000:{
                    items: 3,
                    stagePadding: 100
-               }
+                }
            }
-       });
+        });
 
-   };
-   carousel();
+    };
+    carousel();
 
-   $('nav .dropdown').hover(function(){
+    $('nav .dropdown').hover(function(){
        var $this = $(this);
        // 	 timer;
        // clearTimeout(timer);
@@ -182,34 +139,34 @@ AOS.init({
        $this.find('> a').attr('aria-expanded', true);
        // $this.find('.dropdown-menu').addClass('animated-fast fadeInUp show');
        $this.find('.dropdown-menu').addClass('show');
-   }, function(){
-       var $this = $(this);
-           // timer;
-       // timer = setTimeout(function(){
-           $this.removeClass('show');
+    }, function(){
+        var $this = $(this);
+        // timer;
+        // timer = setTimeout(function(){
+            $this.removeClass('show');
            $this.find('> a').attr('aria-expanded', false);
            // $this.find('.dropdown-menu').removeClass('animated-fast fadeInUp show');
            $this.find('.dropdown-menu').removeClass('show');
-       // }, 100);
-   });
+           // }, 100);
+        });
 
 
-   $('#dropdown04').on('show.bs.dropdown', function () {
-     console.log('show');
-   });
+        $('#dropdown04').on('show.bs.dropdown', function () {
+            console.log('show');
+        });
 
-   // scroll
-   var scrollWindow = function() {
-       $(window).scroll(function(){
-           var $w = $(this),
-                   st = $w.scrollTop(),
-                   navbar = $('.nos_navbar'),
-                   sd = $('.js-scroll-wrap');
+        // scroll
+        function scrollWindow() {
+            $(window).scroll(function(){
+                var $w = $(this),
+                st = $w.scrollTop(),
+                navbar = $('.nos_navbar'),
+                sd = $('.js-scroll-wrap');
 
-           if (st > 150) {
-               if ( !navbar.hasClass('scrolled') ) {
-                   navbar.addClass('scrolled');
-               }
+                if (st > 150) {
+                    if ( !navbar.hasClass('scrolled') ) {
+                        navbar.addClass('scrolled');
+                    }
            }
            if (st < 150) {
                if ( navbar.hasClass('scrolled') ) {
@@ -219,12 +176,12 @@ AOS.init({
            if ( st > 350 ) {
                if ( !navbar.hasClass('awake') ) {
                    navbar.addClass('awake');
-               }
+                }
 
-               if(sd.length > 0) {
+                if(sd.length > 0) {
                    sd.addClass('sleep');
-               }
-           }
+                }
+            }
            if ( st < 350 ) {
                if ( navbar.hasClass('awake') ) {
                    navbar.removeClass('awake');
@@ -232,13 +189,11 @@ AOS.init({
                }
                if(sd.length > 0) {
                    sd.removeClass('sleep');
-               }
-           }
-       });
-   };
-   scrollWindow();
-
-
+                }
+            }
+        });
+    };
+    scrollWindow();
    var counter = function() {
 
        $('#section-counter').waypoint( function( direction ) {
@@ -248,128 +203,155 @@ AOS.init({
                var comma_separator_number_step = $.animateNumber.numberStepFactories.separator(',')
                $('.number').each(function(){
                    var $this = $(this),
-                       num = $this.data('number');
+                   num = $this.data('number');
                        console.log(num);
-                   $this.animateNumber(
-                     {
-                       number: num,
-                       numberStep: comma_separator_number_step
-                     }, 7000
-                   );
+                       $this.animateNumber(
+                           {
+                               number: num,
+                               numberStep: comma_separator_number_step
+                            }, 7000
+                            );
                });
 
            }
 
-       } , { offset: '95%' } );
+        } , { offset: '95%' } );
 
-   }
-   counter();
+    }
+    counter();
 
-   var contentWayPoint = function() {
-       var i = 0;
-       $('.nos-animate').waypoint( function( direction ) {
-
-           if( direction === 'down' && !$(this.element).hasClass('nos-animated') ) {
-
-               i++;
-
-               $(this.element).addClass('item-animate');
-               setTimeout(function(){
-
-                   $('body .nos-animate.item-animate').each(function(k){
-                       var el = $(this);
-                       setTimeout( function () {
-                           var effect = el.data('animate-effect');
-                           if ( effect === 'fadeIn') {
-                               el.addClass('fadeIn nos-animated');
-                               el.removeClass('nos-animate')
-                           } else if ( effect === 'fadeInLeft') {
-                               el.addClass('fadeInLeft nos-animated');
-                               el.removeClass('nos-animate')
-                           } else if ( effect === 'fadeInRight') {
-                               el.addClass('fadeInRight nos-animated');
-                               el.removeClass('nos-animate')
-                           } else {
-                               el.addClass('fadeInUp nos-animated');
-                               el.removeClass('nos-animate')
-                           }
-                           el.removeClass('item-animate');
-                       },  k * 50, 'easeInOutExpo' );
-                   });
-
-               }, 100);
-
-           }
-
-       } , { offset: '95%' } );
-   };
-   window.contentWayPoint = contentWayPoint;
-
-
-   // navigation
-   var OnePageNav = function() {
-       $(".smoothscroll[href^='#'], #nos-nav ul li a[href^='#']").on('click', function(e) {
+    var OnePageNav = function() {
+        $(".smoothscroll[href^='#'], #nos-nav ul li a[href^='#']").on('click', function(e) {
             e.preventDefault();
 
             var hash = this.hash,
-                    navToggler = $('.navbar-toggler');
+            navToggler = $('.navbar-toggler');
             $('html, body').animate({
-           scrollTop: $(hash).offset().top
-         }, 700, 'easeInOutExpo', function(){
-           window.location.hash = hash;
-         });
+                scrollTop: $(hash).offset().top
+            }, 700, 'easeInOutExpo', function(){
+                window.location.hash = hash;
+            });
 
 
-         if ( navToggler.is(':visible') ) {
-             navToggler.click();
-         }
+            if ( navToggler.is(':visible') ) {
+                navToggler.click();
+            }
        });
        $('body').on('activate.bs.scrollspy', function () {
-         console.log('nice');
+           console.log('nice');
        })
-   };
-   OnePageNav();
+    };
+    OnePageNav();
 
 
-   // magnific popup
-   $('.image-popup').magnificPopup({
+    // magnific popup
+    $('.image-popup').magnificPopup({
    type: 'image',
    closeOnContentClick: true,
    closeBtnInside: true,
    fixedContentPos: true,
    mainClass: 'mfp-no-margins mfp-with-zoom', // class to remove default margin from left and right side
     gallery: {
-     enabled: true,
-     navigateByImgClick: true,
-     preload: [0,1] // Will preload 0 - before current, and 1 after the current image
-   },
-   image: {
+        enabled: true,
+        navigateByImgClick: true,
+        preload: [0,1] // Will preload 0 - before current, and 1 after the current image
+    },
+    image: {
      verticalFit: true
-   },
-   zoom: {
-     enabled: true,
-     duration: 300 // don't foget to change the duration also in CSS
-   }
+    },
+    zoom: {
+        enabled: true,
+        duration: 300 // don't foget to change the duration also in CSS
+    }
  });
 
  $('.popup-youtube, .popup-vimeo, .popup-gmaps').magnificPopup({
-   disableOn: 700,
-   type: 'iframe',
-   mainClass: 'mfp-fade',
-   removalDelay: 160,
-   preloader: false,
+     disableOn: 700,
+     type: 'iframe',
+     mainClass: 'mfp-fade',
+     removalDelay: 160,
+     preloader: false,
 
-   fixedContentPos: false
- });
+     fixedContentPos: false
+    });
 
 
  $('.appointment_date').datepicker({
      'format': 'm/d/yyyy',
      'autoclose': true
-   });
+    });
 
-   $('.appointment_time').timepicker();
+    $('.appointment_time').timepicker();
 
+    var contentWaypoint = function(){
+        var i = 0;
+        $('.nos-animate').waypoint( function( direction ) {
+
+            if( direction === 'down' && !$(this.element).hasClass('nos-animated') ) {
+
+                i++;
+
+                $(this.element).addClass('item-animate');
+                setTimeout(function(){
+
+                    $('body .nos-animate.item-animate').each(function(k){
+                        var el = $(this);
+                        setTimeout( function () {
+                            var effect = el.data('animate-effect');
+                            if ( effect === 'fadeIn') {
+                                el.addClass('fadeIn nos-animated');
+                                el.removeClass('nos-animate')
+                            } else if ( effect === 'fadeInLeft') {
+                                el.addClass('fadeInLeft nos-animated');
+                                el.removeClass('nos-animate')
+                            } else if ( effect === 'fadeInRight') {
+                                el.addClass('fadeInRight nos-animated');
+                                el.removeClass('nos-animate')
+                            } else {
+                                el.addClass('fadeInUp nos-animated');
+                                el.removeClass('nos-animate')
+                            }
+                            el.removeClass('item-animate');
+                        },  k * 50, 'easeInOutExpo' );
+                    });
+
+                }, 100);
+
+            }
+
+        } , { offset: '95%' } );
+}
+contentWaypoint()
+
+$('#bookingForm').submit((e)=>{
+    e.preventDefault()
+    const data = {
+        full_name: $('input[name="full_name"]').val(),
+        date: $('input[type="date"]').val(),
+        time: $('input[name="time"]').val(),
+        phone: $('input[name="phone"]').val(),
+        message: $('textarea[name="message"]').val()
+    }
+    Axios.post('/booking', data)
+    .then((res) => {
+        if(res.status === 201){
+            $('#bookingForm').trigger('reset')
+        }
+        Toast.fire({
+            title: 'SEE YOU THEN!',
+            text: res.data,
+            icon: 'success'
+        })
+    }).catch((err) => {
+        Toast.fire({
+            title:'Something is missing...',
+            text:err.message,
+            icon:'error'
+        })
+    });
+
+    console.log(data);
+})
 
 
 

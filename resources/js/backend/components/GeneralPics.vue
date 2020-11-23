@@ -154,6 +154,33 @@
                     </form>
             </div>
         </div>
+<!-- Background Two -->
+            <div class="modal fade" id="bg_2Change" tabindex="-1" role="dialog" aria-labelledby="bg_1Change" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <form action="POST" enctype="multipart/form-data" @submit="formSubmitBgi">
+                        <div class="modal-content bg-dark nos-modal">
+                            <div class="modal-header">
+                                <h5 class="modal-title text-center" id="exampleModalLongTitle">Change Your Second Background</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group row">
+                                    <label for="BG_2" class="col-sm-2 col-form-label">Background 2</label>
+                                    <div class="col-sm-10">
+                                        <input type="file" class="form-control" v-on:change="onImageChangeBgii" placeholder="Choose an Image">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit"  class="btn btn-warning"  >Save changes</button>
+                            </div>
+                        </div>
+                    </form>
+            </div>
+        </div>
 
   </div>
 </template>
@@ -226,6 +253,37 @@
                 axios.post('/api/bg1',formData, config)
                 .then(function(res){
                     $('#bg_1Change').modal('hide')
+                    Toast.fire({
+                        icon: 'success',
+                        title: res.data.msg
+                    })
+
+
+                })
+                .catch(function(e){
+                    toast.fire({
+                        icon: 'error',
+                        title: e
+                    })
+                    console.log(e)
+                })
+            },
+            /** For the Background Two */
+            onImageChangeBgii(e){
+                this.bg_2 = e.target.files[0]
+            },
+            formSubmitBgi(e){
+                e.preventDefault()
+
+                const config = {
+                    headers: {'content-type': 'multipart/form-data'}
+                }
+                let formData = new FormData()
+                formData.append('bg_2', this.bg_2)
+
+                axios.post('/api/bg2',formData, config)
+                .then(function(res){
+                    $('#bg_2Change').modal('hide')
                     Toast.fire({
                         icon: 'success',
                         title: res.data.msg

@@ -17,10 +17,6 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 /* The Routes for the Client Side */
-Route::group(['namespace' => 'user'], function () {
-    Route::get('/','HomeController@index')->name('home');
-    // Route::get('{path}', 'HomeController@index')->where('path','([A-z-\d\/_.]+)?');
-});
 
 
 Route::redirect('/admin', '/admin/dashboard', 301);
@@ -29,10 +25,16 @@ Route::redirect('/home', '/admin/dashboard', 301);
 
 Route::group(['prefix' => 'admin','middleware' => ['auth', 'admin'], 'namespace'=>'admin'], function () {
 
-    Route::get('{path}', 'DashboardController@index')->where('path','([A-z-\d\/_.]+)?');
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard.index');
+    Route::get('{path}', 'DashboardController@index')->where('path','([A-z-\d\/_.]+)?');
 
 });
+Route::get('/','User\HomeController@index')->name('home');
+Route::get('/','User\HomeController@menu')->name('menu');
+Route::get('/','User\HomeController@services')->name('services');
+Route::get('/','User\HomeController@events')->name('events');
+Route::get('/','User\HomeController@contactUs')->name('contact-us');
+Route::resource('booking','User\BookingsController');
 
 
 

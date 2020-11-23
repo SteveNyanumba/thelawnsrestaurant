@@ -4,6 +4,9 @@ window.Vue = Vue;
 import VueRouter from 'vue-router'
 import { AlertError, Form, HasError } from 'vform'
 window.Form = Form;
+export const Bus = new Vue()
+window.Fire = new Vue()
+window.Bus = Bus
 
 // importing UI Components
 require('./bootstrap');
@@ -21,7 +24,7 @@ require('./components')
 require('./sections')
 
 
-window.Fire = new Vue()
+
 
 window.VueProgressBar = require('vue-progressbar')
 

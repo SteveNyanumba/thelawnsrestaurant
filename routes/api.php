@@ -20,6 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 Route::apiResource('slider', 'SlidersController');
+Route::apiResource('slidercategories', 'SliderCategoryController');
 
 
 Route::post('/logo', 'PhotosController@logoStore');
@@ -27,9 +28,6 @@ Route::post('/bg1', 'PhotosController@backgroundOne');
 Route::post('/bg2', 'PhotosController@backgroundTwo');
 Route::post('/bg3', 'PhotosController@backgroundThree');
 Route::post('/bg4', 'PhotosController@backgroundFour');
-Route::post('/slider1', 'PhotosController@sliderOne');
-Route::post('/slider2', 'PhotosController@sliderTwo');
-Route::post('/slider3', 'PhotosController@sliderThree');
 Route::post('/testimonialbg', 'PhotosController@testimonial');
 
 
