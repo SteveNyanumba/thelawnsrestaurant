@@ -23,7 +23,7 @@ Route::redirect('/admin', '/admin/dashboard', 301);
 Route::redirect('/home', '/admin/dashboard', 301);
 
 
-Route::group(['prefix' => 'admin','middleware' => ['auth', 'admin'], 'namespace'=>'admin'], function () {
+Route::group(['prefix' => 'admin','middleware' => ['auth', 'admin'], 'namespace'=>'Admin'], function () {
 
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard.index');
     Route::get('{path}', 'DashboardController@index')->where('path','([A-z-\d\/_.]+)?');
