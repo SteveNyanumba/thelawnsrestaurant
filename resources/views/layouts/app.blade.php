@@ -14,7 +14,7 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <!-- Styles -->
-    <link href="{{ asset('frontend/css/app.css') }}" rel="stylesheet">
+    <link href="{{ mix('frontend/css/app.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -88,6 +88,6 @@
             @include('templates.footer')
         @endif
         <!-- Scripts -->
-        <script src="{{ asset('frontend/js/main.js') }}" defer></script>
+        <script src="{{ mix('frontend/js/main.js') }}" defer></script>
     </body>
     </html>
