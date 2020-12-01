@@ -1,4 +1,4 @@
-<section class="nos-intro">
+<section class="nos-intro" style="margin-top: -16em;">
     <div class="container-wrap">
         <div class="wrap d-md-flex align-items-xl-end">
             <div class="info">
@@ -31,7 +31,9 @@
                 <form id="bookingForm" class="appointment-form">
                     <div class="d-md-flex">
                         <div class="form-group">
-                            <input type="text" name="full_name" id="booking_full_name" class="form-control" placeholder="Full Name">
+                            <input required type="text" name="full_name" id="booking_full_name" class="form-control" placeholder="Full Name" @if (auth()->user())
+                        value="{{ auth()->user()->name}}"
+                            @endif>
                         </div>
 
                     </div>
@@ -39,29 +41,32 @@
                         <div class="form-group">
                             <div class="input-wrap">
                                 <div class="icon"><span class="ion-md-calendar"></span></div>
-                                <input type="date" id="booking_date" class="form-control" >
+                                <input required type="date" id="booking_date" class="form-control" >
                             </div>
                         </div>
-                        <div class="form-group ml-md-4">
+                        <div class="form-group ml-md-5">
                             <div class="input-wrap">
                                 <div class="icon"><span class="ion-ios-clock"></span></div>
-                                <input type="time" name="time" id="booking_time" class="form-control">
+                                <input required type="time" name="time" id="booking_time" class="form-control">
                             </div>
                         </div>
-                        <div class="form-group ml-md-4">
-                            <input type="text" name="phone" id="booking_phone" class="form-control" placeholder="Phone">
+                        <div class="form-group ml-md-5">
+                            <input required type="text" name="phone" id="booking_phone" class="form-control" placeholder="Phone">
                             <div class="icon"><span class="ion-ios-call-outline"></span></div>
                         </div>
-                        <div class="form-group ml-md-4" >
-                            <textarea name="message" id="booking_message" cols="30" rows="2" class="form-control" placeholder="Message"></textarea>
-                        </div>
-                        <div class="form-group ml-md-4">
-                            <input type="number" name="people" id="booking_people" class="form-control"/>
+                        <div class="form-group ml-md-2">
+                            <input required type="number" value="2" name="people" id="booking_people" class="form-control"/>
                         </div>
                     </div>
                     <div class="d-md-flex">
+                        <div class="form-group ml-md-5" >
+                            <textarea required name="message" id="booking_message" cols="30" rows="2" class="form-control" placeholder="Message"></textarea>
+                        </div>
+
+                    </div>
+                    <div class="d-md-flex m-4">
                         <div class="form-group ml-md-2">
-                            <input type="submit" value="Book Now" class="btn btn-white py-3 px-4">
+                            <input required type="submit" value="Book Now" class="btn btn-white py-3 px-4">
                         </div>
                     </div>
                 </form>

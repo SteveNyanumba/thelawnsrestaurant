@@ -875,7 +875,7 @@ h1, h2, h3, h4, h5,
 			content: '';
 			width: 100%;
 			height: 1px;
-			border-bottom: 1px dashed darken($primary,30%);
+			border-bottom: 1px dashed darken($secondary, 30%);
 			z-index: -1;
 		}
 		h3{
@@ -2589,4 +2589,8 @@ textarea.form-control {
         background-color: black !important;
         color: white !important;
     }
+}
+
+::placeholder{
+    color: rgba(31,93,56,0.7)
 }

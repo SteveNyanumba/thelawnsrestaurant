@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="m-3">
         <div class="card nos-card">
             <div class="card-header">
                 <h3 class="card-title">Menu Items</h3>
@@ -23,6 +23,7 @@
                                     <th>Description</th>
                                     <th>Price (KES)</th>
                                     <th>Category</th>
+                                    <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -31,6 +32,9 @@
                                     <td>{{ item.description }}</td>
                                     <td>{{ item.price }}</td>
                                     <td>{{ item.category }}</td>
+                                    <td>
+                                        <button type="button" class="btn btn-danger"><i class="fa fa-trash-o" ></i></button>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -103,6 +107,9 @@ export default {
         this.getCategories()
         this.getMenu()
         Fire.$on('navigated', ()=>{
+            this.getMenu()
+        })
+        Bus.$on('AfterCreated',()=>{
             this.getMenu()
         })
     }

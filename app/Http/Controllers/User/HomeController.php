@@ -18,6 +18,18 @@ class HomeController extends Controller
     {
         return view('menu');
     }
+    public function contactUs()
+    {
+        return view('contact-us');
+    }
+    public function events()
+    {
+        return view('events');
+    }
+    public function services()
+    {
+        return view('services');
+    }
 
 
 

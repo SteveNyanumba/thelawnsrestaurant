@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API\v1\User;
 
-use App\Menu;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
+use App\Menu;
 use Illuminate\Support\Str;
 
 class MenusController extends Controller
@@ -53,9 +53,6 @@ class MenusController extends Controller
         $menuItem->price = $request->price;
         $menuItem->category = $request->category;
         $menuItem->save();
-
-        return Response('Successfully Created a new Menu Item', 201);
-
     }
 
     /**
@@ -106,7 +103,7 @@ class MenusController extends Controller
         $menuItem->category = $request->category;
         $menuItem->save();
 
-        return Response('Successfully Updated your Menu Item', 201);
+        return Response('Successfully Updated your Menu Item', 200);
     }
 
     /**
@@ -118,6 +115,6 @@ class MenusController extends Controller
     public function destroy($id)
     {
         Menu::find($id)->delete();
-        return Response('Successfully Deleted your Menu Item',202);
+        return Response('Successfully Deleted your Menu Item',200);
     }
 }

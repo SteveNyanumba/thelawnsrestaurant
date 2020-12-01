@@ -2,7 +2,7 @@
 <template>
   <div>
       <!-- Button trigger modal -->
-  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#addMenuitem">
+  <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addMenuitem">
     Add new item to Menu
   </button>
 
@@ -73,7 +73,7 @@ export default {
     methods:{
         async loadCategories(){
             try {
-                const loader = await axios.get('/api/categories')
+                const loader = await axios.get('/api/menu-categories')
                 this.categories = loader.data
             } catch (error) {
                 console.log(error)
@@ -104,7 +104,7 @@ export default {
                     icon:'success',
                     title:res.data
                 })
-                Fire.$emit('AfterCreated')
+                Bus.$emit('AfterCreated')
             } catch (err) {
                 console.log(err)
             }
@@ -115,10 +115,6 @@ export default {
     },
     created(){
         this.loadCategories()
-        // Fire.$on('AfterCreated', ()=>{
-        //     this.$forceUpdate()
-        // })
-
     },
 
 }

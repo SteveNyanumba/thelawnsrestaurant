@@ -5,6 +5,7 @@
 Vue.component('AddUser',require('./Create/AddUser.vue').default)
 Vue.component('AddSlider',require('./Create/AddSlider.vue').default)
 Vue.component('AddSliderCategory',require('./Create/AddSliderCategory.vue').default)
+Vue.component('AddMenuCategory',require('./Create/AddMenuCategory.vue').default)
 Vue.component('AddMenu',require('./Create/AddMenu.vue').default)
 Vue.component('AddBlog',require('./Create/AddBlog.vue').default)
 Vue.component('AddEvent',require('./Create/AddEvent.vue').default)

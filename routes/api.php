@@ -30,9 +30,3 @@ Route::post('/bg3', 'PhotosController@backgroundThree');
 Route::post('/bg4', 'PhotosController@backgroundFour');
 Route::post('/testimonialbg', 'PhotosController@testimonial');
 
-
-
-Route::group(['middleware' => ['auth', 'admin']], function () {
-    Route::apiResource('menu', 'MenusController'); // For the Menu
-    Route::apiResource('categories', 'CategoriesController'); // For the Food Categories
-});

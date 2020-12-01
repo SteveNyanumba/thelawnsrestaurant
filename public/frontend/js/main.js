@@ -55797,22 +55797,28 @@ AOS.init({
   $('#bookingForm').submit(function (e) {
     e.preventDefault();
     var data = {
-      full_name: $('input[name="full_name"]').val(),
-      date: $('input[type="date"]').val(),
-      time: $('input[name="time"]').val(),
-      phone: $('input[name="phone"]').val(),
-      message: $('textarea[name="message"]').val()
+      full_name: $('input#booking_full_name').val(),
+      date: $('input#booking_date').val(),
+      time: $('input#booking_time').val(),
+      phone: $('input#booking_phone').val(),
+      message: $('textarea#booking_message').val(),
+      people: $('input#booking_people').val()
     };
     Axios.post('/booking', data).then(function (res) {
       if (res.status === 201) {
         $('#bookingForm').trigger('reset');
+        Toast.fire({
+          title: 'SEE YOU THEN!',
+          text: res.data,
+          icon: 'success'
+        });
+      } else {
+        Toast.fire({
+          icon: 'warning',
+          title: 'Be Warned',
+          text: res.data
+        });
       }
-
-      Toast.fire({
-        title: 'SEE YOU THEN!',
-        text: res.data,
-        icon: 'success'
-      });
     })["catch"](function (err) {
       Toast.fire({
         title: 'Something is missing...',

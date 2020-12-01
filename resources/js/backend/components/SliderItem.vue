@@ -22,7 +22,7 @@ export default {
             type:String,
         },
         short:{
-            type:Number
+            type:String
         },
         image:{
             type:String

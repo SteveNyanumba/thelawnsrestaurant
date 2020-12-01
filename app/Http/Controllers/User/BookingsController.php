@@ -4,7 +4,6 @@ namespace App\Http\Controllers\User;
 
 use App\Booking;
 use App\Http\Controllers\Controller;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class BookingsController extends Controller
@@ -45,6 +44,16 @@ class BookingsController extends Controller
             'people'=>'required',
             'message'=>'required'
         ]);
+
+        if ($request->people <=0) {
+            return response('you cannot have less than one person');
+        }
+
+        $t = (time())+7200;
+        $bt = strtotime($request->date." ".$request->time);
+        if ($bt <= $t) {
+            return response($bt." is less than ".$t);
+        }
 
         $booking = new Booking();
         $booking->name = $request->full_name;
